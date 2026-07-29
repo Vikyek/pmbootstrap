@@ -31,7 +31,7 @@ def kill_sccache() -> None:
     with closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as sock:
         sock.settimeout(2)
         if sock.connect_ex(("127.0.0.1", port)) == 0:
-            pmb.chroot.root(["sccache", "--stop-server"])
+            pmb.chroot.root(["sccache", "--stop-server"], check=False)
 
 
 def shutdown_cryptsetup_device(name: str) -> None:
